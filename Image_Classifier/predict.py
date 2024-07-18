@@ -53,7 +53,9 @@ def main():
 
     with open(args.category_names, 'r') as f:
         class_names = json.load(f)
-        classes = {int(i): class_names[str(i)] for i in classes}
+        # classes = {int(i): class_names[str(i)] for i in classes}
+        classes = {int(key): value for key, value in class_names.items()}
+
 
     top_values, top_classes = predict(args.image_path, model, args.top_k, classes)
 
